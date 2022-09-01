@@ -1,1 +1,0 @@
-print("vamos a aprender")
