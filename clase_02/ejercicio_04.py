@@ -37,21 +37,28 @@ heroes_info = {
 
 
 
+
 seleccion = {}
 
-i = 0
-
 for heroes in heroes_para_reclutar:
-    for info in heroes_info:
-        if heroes == info:
+    for dato in heroes_info:
+        if heroes == dato:
             seleccion[heroes] = heroes_info[heroes]
-           
+            seleccion[heroes]["Habilidades"] = set(seleccion[heroes]["Habilidades"])
     
 
-    i += 0
+
+print(seleccion)
+
+# for habilidades in seleccion:
+#     if habilidades == set(seleccion[heroes]["Habilidades"]):
+#         print(habilidades)
+
+
 
 # print(seleccion)
 
-for clave in seleccion:
-    if clave == "habilidades":
-        print(set(seleccion["habilidades"]))
+
+# Preparando todo para reclutar héroes y heroínas para la liga de la justicia, el departamento de HR dispone de una larga lista de justicieros pero solo tiene información detallada de algunos de ellos.
+# Es por eso que te piden que desarrolles un pequeño programa el cual basado en la lista 'heroes_para_reclutar' busque en el diccionario 'heroes_info' los que coincidan y los guarde en un nuevo diccionario para luego imprimir por consola todos sus datos. (id, origen, etc)
+# TIP: Las habilidades están repetidas, busca la manera de que en el resultado final no existan duplicados, que usarías para eso?
