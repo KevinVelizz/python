@@ -49,16 +49,6 @@ print(dic_habilidades)
 
 
 
-
-
-
-
-
-
-
-
-
-
 # print(habilidades)
 
 # dic_habilidades = {}
