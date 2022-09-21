@@ -1,4 +1,3 @@
-from traceback import print_tb
 
 
 heroes_para_reclutar = ["Batman", "BatWoman", "BatGirl",

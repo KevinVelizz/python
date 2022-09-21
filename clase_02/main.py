@@ -45,6 +45,7 @@ def calcular_altura_maxima():
 def calcular_altura_minma():
 
     superheroe_mas_bajo = lista_personajes[0]
+    
     altura_heroe_mas_bajo = float(superheroe_mas_bajo["altura"])
 
     nombre_mas_bajo = superheroe_mas_bajo["nombre"]
