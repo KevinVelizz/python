@@ -138,25 +138,23 @@ def stark_menu_principal_desafio_cinco():
     return retorno
 
 
-# print(stark_menu_principal_desafio_cinco())
+print(stark_menu_principal_desafio_cinco())
 
 #-----------Punto 1.3---------------------
 
 def stark_marvel_app_cinco(lista:list):
-
+    
     letra_recibida = stark_menu_principal_desafio_cinco()
 
-    
-    
+    respuesta = True
 
-    while(True):
-
+    while(respuesta == True):
+        
         if(letra_recibida == -1):
         
             print("N/A")
-            break
-        
-        
+            continue
+    
         letra_recibida = letra_recibida.upper()
 
         if(letra_recibida == "A"):
@@ -412,6 +410,8 @@ def calcular_max_genero(lista:list, clave:str, genero:str) -> dict:
 def inicio(lista:list):
 
     stark_normalizar_datos(lista)
+
+    stark_marvel_app_cinco(lista)
 
     # heroe = calcular_altura_mas_alta(lista)
     
