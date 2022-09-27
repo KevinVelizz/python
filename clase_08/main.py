@@ -419,6 +419,8 @@ def calcular_max_genero(lista:list, clave:str, genero:str) -> dict:
 
     return retorno
 
+#-----------Punto 3.3---------------------
+
 def calcular_max_min_dato(lista:list, clave:str, genero:str, tipo:str) -> str:
 
 
@@ -448,33 +450,119 @@ def calcular_max_min_dato(lista:list, clave:str, genero:str, tipo:str) -> str:
 
 # print(calcular_max_min_dato(lista_heroes,"peso","M","maximo"))
 
+#-----------Punto 3.4---------------------
 
 
-def stark_calcular_imprimir_guardar_heroe_genero(lista:list, genero:str,clave:str,tipo:str) -> str:
+def stark_calcular_imprimir_guardar_heroe_genero(lista:list, genero:str,clave:str,tipo:str) -> bool:
+    '''
+    Calcula y guarda el dato en un archivo csv.
+    Recibe por parametro una lista y 3 strings.
+    Retorna verdadero en caso de no haber error en caso contrario falso.
+    '''
     
-    genero = genero.upper()
-    clave = clave.lower()
-    tipo = tipo.lower()
 
-    validacion_clave = re.search("altura|peso|fuerza", clave)
-    validacion_tipo = re.search("minimo|maximo", tipo)
-    validacion_genero = re.search("F|M", genero)
+    genero = re.findall("[FfMm]+", genero)
 
-    if(type(lista) == type(list()) and len(lista) > 0 and (validacion_clave and validacion_tipo and validacion_genero) != None):
-        dato = "Mayor"
-        if(tipo == "minimo"):
-            dato = "Menor"
-        if(tipo == "minimo" or tipo == "maximo"):
-            heroe_min_max = calcular_max_min_dato(lista,clave,genero,tipo)
-            
-            data_heroe = "{0} {1}: Nombre: {2} | {3}: {4}".format(dato, clave, heroe_min_max["nombre"], clave, heroe_min_max[clave])
-        imprimir_dato(data_heroe)
+    retorno = True
 
-        guardar_archivo(f"clase_repaso\heroes_{tipo}_{clave}_{genero}.csv", data_heroe)
+    if(type(lista) == type(list()) and len(lista) > 0):
 
+        genero = genero[0].upper()
+        clave = clave.lower()
+        tipo = tipo.lower()
+
+        if(clave == "peso" or clave == "altura" or clave == "fuerza"):
+            dato = "Mayor"
+            if(tipo == "minimo"):
+                dato = "Menor"
+            if(tipo == "minimo" or tipo == "maximo"):
+                heroe_min_max = calcular_max_min_dato(lista,clave,genero[0],tipo)
+                
+                data_heroe = "{0} {1}: Nombre: {2} | {3}: {4}".format(dato, clave, heroe_min_max["nombre"], clave, heroe_min_max[clave])
+            # imprimir_dato(data_heroe)
+
+            guardar_archivo(f"clase_repaso\heroes_{tipo}_{clave}_{genero}.csv", data_heroe)
+        else:
+            retorno = False
     else:
-        print("N/A")
+        retorno = False
+    
+    return retorno
+
+
 # stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"F", "altura", "minimo")
+
+#-----------Punto 4.1---------------------
+
+def sumar_dato_heroe_genero(lista:list, clave:str, genero:str) -> int:
+    '''
+    Suma los datos deseados.
+    Recibe por parametro una lista, y 3 string.
+    Retorna el dato o un -1 en caso de error
+    '''
+    if(type(lista) == type(list()) and len(lista) > 0):
+
+        suma_de_datos = 0
+        for heroe in lista:
+            if(type(heroe) == type(dict()) and len(heroe) > 0 and heroe["genero"] == genero):
+                # print(heroe[clave])
+                if(type(heroe[clave]) == type(float()) or type(heroe[clave]) == type(int())):
+                    datos = heroe[clave] 
+                    suma_de_datos = suma_de_datos + datos
+                    retorno = suma_de_datos
+                else: 
+                    retorno = False
+                    
+                    # print(suma_de_datos)
+            else:
+                continue
+        # print(suma_de_datos)
+    else:
+        retorno = False
+    
+    return retorno
+
+
+#-----------Punto 4.2---------------------
+
+def cantidad_heroes_genero(lista:list,genero:str)->int:
+    '''
+    La funcion calcula la cantidad total de hereo o heroinas, segun el sexo recibido.
+    Recibe por parametro una lista y un string.
+    Retorna un entero.
+    '''
+
+    contador = 0
+    if(type(lista) == type(list()) and len(lista) > 0):
+        genero = re.findall("[fFmM]", genero)
+        genero = genero[0].upper()
+        for heroe in lista:
+            if(heroe["genero"] == genero):
+                contador = contador + 1
+
+    return contador
+
+#-----------Punto 4.3---------------------
+
+def calcular_promedio_genero(lista:list,clave:str,genero:str) -> int:
+
+    cantidad_total_heroes = cantidad_heroes_genero(lista,genero)
+
+    suma_total = sumar_dato_heroe_genero(lista,clave,genero)
+
+    promedio = suma_total / cantidad_total_heroes
+
+    return promedio
+
+#-----------Punto 4.4---------------------
+
+def stark_calcular_imprimir_guardar_promedio_altura_genero(lista:list,clave:str,tipo:str,genero:str):
+
+    
+
+    pass
+
+
 
 
 
@@ -482,7 +570,10 @@ def app_stark(lista:list) -> str:
 
     stark_normalizar_datos(lista)
 
-    stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"f","altura","minimo")
-
+    print(calcular_promedio_genero(lista,"altura","M"))
 
 app_stark(lista_heroes)
+
+
+
+

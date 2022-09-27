@@ -19,24 +19,17 @@ import time
 
 lista = [20,3,6,1,4,8,23,3,4,20,3,6,1,4,8,23,3,4,20,3,6,1,4,8,23,3,4,20,3,6]
 
-
-
-
 def encontrar_minimo(lista_recibida):
 
     num_min = 0
 
 
     for index in range(len(lista_recibida)):
-        
-        # print(index)
 
         if(lista_recibida[index] < lista_recibida[num_min]):
 
             num_min = index
-            print(num_min)
-            
-    # print(num_min)
+
     return num_min
 
 # encontrar_minimo(lista)
@@ -54,8 +47,6 @@ def nahuel_sort(lista:list) -> list:
     while(len(lista_recibida) > 0):
         
         numero_min = encontrar_minimo(lista_recibida)
-
-
         lista_ordenada.append(lista_recibida.pop(numero_min))
     
     
@@ -63,7 +54,7 @@ def nahuel_sort(lista:list) -> list:
         
 
 
-# print(nahuel_sort(lista))
+print(nahuel_sort(lista))
 
 
 
@@ -89,11 +80,11 @@ def ivan_sort(lista:list) -> list:
     
     return lista_recibida
 
-inicio = time.time()
-# print(ivan_sort(lista))
-final = time.time()
+# inicio = time.time()
+# # print(ivan_sort(lista))
+# final = time.time()
 
-tiempo = final - inicio
+# tiempo = final - inicio
 
 # print(tiempo)
 

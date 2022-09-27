@@ -1,6 +1,6 @@
 
 import re
-from data_stark_06 import lista_personajes 
+from data_stark_06 import lista_personajes  
 
 '''
  {
@@ -175,7 +175,7 @@ def generar_codigo_heroe(id_heroe:int, genero_heroe:str):
     return retorno
     # print(id_genero_formateado)
 
-# print((generar_codigo_heroe(1,"asdasdas")))
+print((generar_codigo_heroe(1,"F")))
 
 
 
@@ -186,9 +186,9 @@ def agregar_codigo_heroe(heroe:dict, id_heroe:int) -> dict:
     genero_heroe = heroe["genero"]
 
     codigo_heroe = generar_codigo_heroe(id_heroe, genero_heroe)
-    
+
     if(len(heroe) > 0 and len(codigo_heroe) < 11):
-        
+
         heroe["codigo_heroe"] = codigo_heroe
 
         retorno = True 
@@ -221,8 +221,7 @@ def stark_generar_codigos_heroes(lista_heroes:list) -> list:
         if(contador == 1):
           primer_heroe = heroe["codigo_heroe"]
 
-    
-    
+
 
     print("Se asignaron {0} códigos".format(contador))
 
@@ -230,8 +229,10 @@ def stark_generar_codigos_heroes(lista_heroes:list) -> list:
 
     print("*El código del último héroe es: {0}".format(heroe["codigo_heroe"])) 
 
-# stark_generar_codigos_heroes(lista_personajes)
+stark_generar_codigos_heroes(lista_personajes)
 
+
+print(lista_personajes)
 
 
 #--------------Sanitizar datos---------------------
@@ -247,13 +248,13 @@ def sanitizar_entero(numero_str:str) -> int:
     Recibe por parametros un string
     Retorna un int
     '''
-    encontar_numero_str = re.findall("[a-z]", numero_str)
+    encontar_numero_str = re.findall("[a-zA-Z]", numero_str)
     # print(encontar_numero_str)
 
     if(len(encontar_numero_str) == 0): 
 
         encontar_numero_str = re.findall("^[+-]?[0-9]+$", numero_str)
-        print(encontar_numero_str)
+        # print(encontar_numero_str)
         # print(encontar_numero_str)
         numero_str = numero_str.strip()
 
@@ -420,8 +421,8 @@ def stark_normalizar_datos(lista_heroes:list):
 
 def generar_indice_nombre(lista_heroes:list):
     '''
-    La función genera indices 
-
+    La función genera indices.
+    Recibe por parametro una lista.
     
     '''
     nombre = ""
@@ -438,7 +439,6 @@ def generar_indice_nombre(lista_heroes:list):
 
     print(lista_nombres)
     
-
 # generar_indice_nombre(lista_personajes)
 
 
