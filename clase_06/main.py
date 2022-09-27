@@ -175,7 +175,7 @@ def generar_codigo_heroe(id_heroe:int, genero_heroe:str):
     return retorno
     # print(id_genero_formateado)
 
-print((generar_codigo_heroe(1,"F")))
+# print((generar_codigo_heroe(1,"F")))
 
 
 
@@ -229,10 +229,10 @@ def stark_generar_codigos_heroes(lista_heroes:list) -> list:
 
     print("*El código del último héroe es: {0}".format(heroe["codigo_heroe"])) 
 
-stark_generar_codigos_heroes(lista_personajes)
+# stark_generar_codigos_heroes(lista_personajes)
 
 
-print(lista_personajes)
+# print(lista_personajes)
 
 
 #--------------Sanitizar datos---------------------
@@ -278,7 +278,7 @@ def sanitizar_entero(numero_str:str) -> int:
 
     return retorno
 
-# sanitizar_entero("20")
+print(sanitizar_entero("20232"))
 
 
 def sanitizar_flotante(numero_str:str) -> float:

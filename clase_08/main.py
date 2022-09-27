@@ -1,6 +1,7 @@
 
 import json
 import re
+from traceback import print_tb
 
 
 '''
@@ -388,10 +389,6 @@ def calcular_min_genero(lista:list, clave:str, genero:str) -> dict:
 
     return retorno
 
-    
-            
-
-
 
 
 #-----------Punto 3.2---------------------
@@ -419,10 +416,11 @@ def calcular_max_genero(lista:list, clave:str, genero:str) -> dict:
 
     return retorno
 
+print(calcular_max_genero(lista_heroes,"altura","F"))
+
 #-----------Punto 3.3---------------------
 
 def calcular_max_min_dato(lista:list, clave:str, genero:str, tipo:str) -> str:
-
 
     if(type(lista) == type(list()) and len(lista) > 0):
 
@@ -444,8 +442,6 @@ def calcular_max_min_dato(lista:list, clave:str, genero:str, tipo:str) -> str:
         retorno = "N/A"
     
     return retorno
-
-
 
 
 # print(calcular_max_min_dato(lista_heroes,"peso","M","maximo"))
@@ -509,14 +505,14 @@ def sumar_dato_heroe_genero(lista:list, clave:str, genero:str) -> int:
                 if(type(heroe[clave]) == type(float()) or type(heroe[clave]) == type(int())):
                     datos = heroe[clave] 
                     suma_de_datos = suma_de_datos + datos
-                    retorno = suma_de_datos
+                    
                 else: 
                     retorno = False
                     
                     # print(suma_de_datos)
             else:
                 continue
-        # print(suma_de_datos)
+        retorno = suma_de_datos
     else:
         retorno = False
     
@@ -545,24 +541,50 @@ def cantidad_heroes_genero(lista:list,genero:str)->int:
 #-----------Punto 4.3---------------------
 
 def calcular_promedio_genero(lista:list,clave:str,genero:str) -> int:
+    '''
+    La funcion calcula el promedio de las claves del genero deseado.
+    Recibe por parametro una lista, y 2 strings.
+    Retorna el promedio.
+    '''
 
-    cantidad_total_heroes = cantidad_heroes_genero(lista,genero)
+    if(type(lista) == type(list()) and len(lista) > 0):
+        cantidad_total_heroes = cantidad_heroes_genero(lista,genero)
 
-    suma_total = sumar_dato_heroe_genero(lista,clave,genero)
+        suma_total = sumar_dato_heroe_genero(lista,clave,genero)
 
-    promedio = suma_total / cantidad_total_heroes
+        promedio = suma_total / cantidad_total_heroes
 
     return promedio
 
 #-----------Punto 4.4---------------------
 
-def stark_calcular_imprimir_guardar_promedio_altura_genero(lista:list,clave:str,tipo:str,genero:str):
+def stark_calcular_imprimir_guardar_promedio_altura_genero(lista:list,clave:str,genero:str) -> bool:
+    '''
+    La funcion guarda el promedio deseado de cada genero y la guarda en un archivo tipo csv.
+    Recibe por parametro una lista y 2 strings.
+    Retonra verdadero si se completo con exito, caso contrario falso.
+    '''
 
+    retorno = True
+    if(type(lista) == type(list()) and len(lista) > 0):
+
+
+        promedio_genero = calcular_promedio_genero(lista,clave,genero)
+        
+        print(type(promedio_genero))
+
+        contenido = "{0} promedio {1}: {2:.2f}".format(clave.capitalize(),genero,promedio_genero)
+
+        guardar_archivo(f"clase_08\heroe_promedio_{clave}_{genero}.csv",contenido)
     
+    else:
+        retorno = "Error: Lista de héroes vacía."
+        return False
+    
+    return retorno
 
-    pass
 
-
+#-----------Punto 5.1---------------------
 
 
 
@@ -570,9 +592,10 @@ def app_stark(lista:list) -> str:
 
     stark_normalizar_datos(lista)
 
-    print(calcular_promedio_genero(lista,"altura","M"))
+    print(stark_calcular_imprimir_guardar_promedio_altura_genero(lista,"altura","M"))
 
 app_stark(lista_heroes)
+
 
 
 
