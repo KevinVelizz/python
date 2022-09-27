@@ -1,6 +1,6 @@
 
 
-lista = [1,2,5,0,3,7,0,4]
+
 
 def buscar_minimo(lista_a_buscar:list) -> int:
 
@@ -32,7 +32,7 @@ def nahuel_sort(lista_a_ordenar:list) -> list:
 
     return lista_ordenada
 
-print(nahuel_sort(lista))
+# print(nahuel_sort(lista))
 
 # print(lista)
 
@@ -65,13 +65,14 @@ def ivan_sort(lista_a_ordenar:list) -> list:
 # print(ivan_sort(lista))
 
 
+lista = [6,1,5,8,6,1,3,9,7,13,23,53]
 
 def qsort(lista_a_ordenar:list)-> list:
     copia_lista = lista_a_ordenar[:]
     lista_der = []
     lista_izq = []
     
-    if len(lista_a_ordenar) <= 1:
+    if (len(lista_a_ordenar) <= 1):
         return lista_a_ordenar
     else:
         pivot = copia_lista[0]
@@ -86,8 +87,9 @@ def qsort(lista_a_ordenar:list)-> list:
     lista_izq.append(pivot)
 
     return lista_izq + lista_der
-# lista_ordenada = qsort(lista)
-# print(lista_ordenada)
+
+lista_ordenada = qsort(lista)
+print(lista_ordenada)
 
 
 

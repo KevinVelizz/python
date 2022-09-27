@@ -35,14 +35,14 @@ def primer_masculino():
 #-----------superheroes género M-------------
 
 
-def mostar_nombre_masculino(lista_heroes:list):
+def mostar_nombre_masculino():
 
-    for heroe in lista_heroes:
+    for heroe in lista_personajes:
 
         if(heroe["genero"] == "M"):
 
-            print("Nombre:{0} | Genero: {1}".format(heroe["nombre"], heroe["genero"]))
-
+            print("Nombre: {0} | Genero: {1}".format(heroe["nombre"], heroe["genero"]))
+            
 # mostar_nombre_masculino()
 
 #-----------superheroes género F-------------

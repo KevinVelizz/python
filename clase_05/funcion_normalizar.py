@@ -35,7 +35,7 @@ stark_normalizar_datos(lista_personajes, 1)
 
 
 
-def obtener_nombre(heroe:dict) -> str:
+# def obtener_nombre(heroe:dict) -> str:
 
     
 

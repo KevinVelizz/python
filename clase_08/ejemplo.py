@@ -41,13 +41,13 @@ def generar_csv(nombre_archivo:str, lista:list):
     with open(nombre_archivo, "w") as archivo:
         for video in lista:
 
-        mensaje = "{0}, {1},{2},{3},{4},{5}"
-        mensaje = mensaje.format(video["title"],
-                video["views"],
-                video["length"],
-                video["img_url"],
-                video["url"],
-                video["date"],)
+            mensaje = "{0}, {1},{2},{3},{4},{5}"
+            mensaje = mensaje.format(video["title"],
+                    video["views"],
+                    video["length"],
+                    video["img_url"],
+                    video["url"],
+                    video["date"],)
 
         archivo.write(mensaje)
         # print(mensaje)

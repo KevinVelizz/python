@@ -140,7 +140,6 @@ def agregar_iniciales_nombre(lista_heroes:list) -> list:
 
 # print(agregar_iniciales_nombre(lista_personajes))
 
-
 def stark_imprimir_nombres_con_iniciales(lista_heroes:list) -> list:
 
     
@@ -151,10 +150,7 @@ def stark_imprimir_nombres_con_iniciales(lista_heroes:list) -> list:
             # print(heroe["iniciales"])
             print("* {0} ({1})".format(heroe["nombre"], heroe["iniciales"]))
 
-
-
 # print(stark_imprimir_nombres_con_iniciales(lista_personajes))
-
 
 #----------------2.1---------
 

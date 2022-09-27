@@ -1,8 +1,7 @@
 
-from cgi import print_arguments
-from cmath import pi
 import json
 import re
+
 
 '''
     {
@@ -47,6 +46,11 @@ lista_heroes = leer_archivo(url_archivo)
 
 
 def primer_heroe_masculino(lista:list)->dict:
+    '''
+    Encuentra el primer heroe masculino.
+    Recibe por parametro una lista.
+    Retorna un diccionario.
+    '''
 
     for heroe in lista:
 
@@ -62,6 +66,12 @@ def primer_heroe_masculino(lista:list)->dict:
 
 
 def primer_heroe_femenino(lista:list)->dict:
+    '''
+    La funcion encuentra el primer heroe femenino.
+    Recibe por parametro una lista.
+    Retorna un diccionario.
+    '''
+
     for heroe in lista:
         if(heroe["genero"] == "F"):
 
@@ -77,7 +87,12 @@ def primer_heroe_femenino(lista:list)->dict:
 
 
 
-def mostar_nombre_masculino(lista_heroes:list):
+def mostar_nombre_masculino(lista_heroes:list) -> str:
+    '''
+    La funcion muestra los nombres de los heroes masculinos.
+    Recibe por parametro una lista.
+    Retorna una string
+    '''
 
     for heroe in lista_heroes:
 
@@ -106,15 +121,11 @@ def imprimir_dato(dato:str) -> str:
     print(dato)
 
 def imprimir_menu_desafio_cinco():
-  
-    
 
     menu ="ingrese\nA - mostrar nombres masculinos\nB - mostrar nombres femeninos\nC - Calcular altura mas alta superheroe masculino\nD - Calcular altura mas alta superheroe femenino \nE - Calcular altura mas bajo superheroe masculino\nF - Calcular altura mas baja superheroe femenino\nG - Calcular promedio de altura superhores masculinos\nH - Calcular promedio de altura superheroes femeninos.\nI - Calcular nombre del superhéroe asociado a cada uno de los indicadores anteriores.\nJ - Calcular cuantos superheroes por tipo de color de ojos\nK - Calcular cuantos superheroes por tipo de color de pelo.\nL - Calcular cuantos superheroes tiene cada tipo de inteligencia\nM - Listar todos los superheroes agrupados por color de ojos\nN - Listar todos los superhéroes agrupados por color de pelo.\nO - Listar todos los superhéroes agrupados por tipo de inteligencia\nZ - Salir"
 
 
     imprimir_dato(menu)
-
-    
     
 #-----------Punto 1.2---------------------
 
@@ -138,55 +149,56 @@ def stark_menu_principal_desafio_cinco():
     return retorno
 
 
-print(stark_menu_principal_desafio_cinco())
+# print(stark_menu_principal_desafio_cinco())
 
 #-----------Punto 1.3---------------------
 
 def stark_marvel_app_cinco(lista:list):
-    
-    letra_recibida = stark_menu_principal_desafio_cinco()
 
-    respuesta = True
 
-    while(respuesta == True):
+
+    while(True):
         
-        if(letra_recibida == -1):
-        
+        letra_recibida = stark_menu_principal_desafio_cinco()
+
+        if(letra_recibida != -1):
+
+            letra_recibida = letra_recibida.upper()
+
+            if(letra_recibida == "A"):
+                mostar_nombre_masculino(lista)
+                continue
+            elif(letra_recibida == "B"):
+                mostrar_nombre_femenino(lista)
+            elif(letra_recibida == "C"):
+                pass
+            elif(letra_recibida == "D"):
+                pass
+            elif(letra_recibida == "E"):
+                pass
+            elif(letra_recibida == "F"):
+                pass
+            elif(letra_recibida == "G"):
+                pass
+            elif(letra_recibida == "H"):
+                pass
+            elif(letra_recibida == "I"):
+                pass
+            elif(letra_recibida == "J"):
+                pass
+            elif(letra_recibida == "K"):
+                pass
+            elif(letra_recibida == "L"):
+                pass
+            elif(letra_recibida == "M"):
+                pass
+            elif(letra_recibida == "N"):
+                pass
+            elif(letra_recibida == "O"):
+                break
+
+        else:
             print("N/A")
-            continue
-    
-        letra_recibida = letra_recibida.upper()
-
-        if(letra_recibida == "A"):
-            mostar_nombre_masculino(lista)
-        elif(letra_recibida == "B"):
-            mostrar_nombre_femenino(lista)
-        elif(letra_recibida == "C"):
-            pass
-        elif(letra_recibida == "D"):
-            pass
-        elif(letra_recibida == "E"):
-            pass
-        elif(letra_recibida == "F"):
-            pass
-        elif(letra_recibida == "G"):
-            pass
-        elif(letra_recibida == "H"):
-            pass
-        elif(letra_recibida == "I"):
-            pass
-        elif(letra_recibida == "J"):
-            pass
-        elif(letra_recibida == "K"):
-            pass
-        elif(letra_recibida == "L"):
-            pass
-        elif(letra_recibida == "M"):
-            pass
-        elif(letra_recibida == "N"):
-            pass
-        elif(letra_recibida == "O"):
-            break
 
 # stark_marvel_app_cinco(lista_heroes)
 
@@ -196,31 +208,38 @@ def stark_marvel_app_cinco(lista:list):
 #-----------Punto 1.5---------------------
 
 def guardar_archivo(nombre_archivo:str, contenido:str):
+    '''
+    La funcion crea un archivo.
+    Recibe por parametros dos strings. 
+    Retorna un boleano.
+    Imprime un mensaje si se crea el archivo.
+    '''
 
+    
 
-    retorno = True
-    retorno = "Se creó el archivo: " + nombre_archivo
-
-    if (re.search("(.json|.csv)$", nombre_archivo) != None):
+    if(re.search("(.json|.csv)$", nombre_archivo) != None):
         with open (nombre_archivo, "w+") as archivo:
             informacion_almacenada = archivo.write(contenido)
         if(informacion_almacenada == len(contenido)):
-
-            print("se guardó")
+            print("Se creó el archivo: " + nombre_archivo)
             retorno = True
-        
     else:
         retorno = False
-    
     return retorno
 
-# print(guardar_archivo("clase_08\heroes_data.csv", "asdsa"))
+# print(guardar_archivo("clase_08\heroes_data.csv", "Hola"))
 
 #-----------Punto 1.6---------------------
 
-def capitalizar_palabras(palabras:str):
+def capitalizar_palabras(palabras:str) -> str:
+    '''
+    Capitaliza las palabras.
+    Recibe como parametro.
+    Retorna strings.
+    '''
 
     lista_palabras = set(re.findall("[a-zA-Z]+" ,palabras))
+    print(lista_palabras)
     
     for palabra in lista_palabras:
 
@@ -241,7 +260,11 @@ def capitalizar_palabras(palabras:str):
 
 def obtener_nombre_capitalizado(heroe:dict) -> str:
     '''
+    Reutiliza la funcion capitalizar_palabras.
+    Recibe por parametro un diccioanario.
+    Retorna los strings del diccionario capitalizado.
     '''
+
     nombre_formatear = capitalizar_palabras(heroe["nombre"])
     # print(nombre_formatear)
     nombre_formateado = "Nombre: {0}".format(nombre_formatear)
@@ -255,6 +278,11 @@ def obtener_nombre_capitalizado(heroe:dict) -> str:
 
 
 def stark_normalizar_datos(lista:list) -> dict:
+    '''
+    Normaliza los datos de la lista.
+    Recibe por parametros una lista.
+    Retorna un diccionario.
+    '''
 
 
     
@@ -277,6 +305,11 @@ def stark_normalizar_datos(lista:list) -> dict:
 #-----------Punto 1.8---------------------
 
 def obtener_nombre_y_dato(heroe:dict, key:str) -> str:
+    '''
+    La funcion obtiene un nombre y un dato deseado.
+    Recibe por parametros un diccionario y un string.
+    Retorna un string.
+    '''
 
     nombre = obtener_nombre_capitalizado(heroe)
 
@@ -289,26 +322,25 @@ def obtener_nombre_y_dato(heroe:dict, key:str) -> str:
 
 #-----------Punto 2.1---------------------
 
-def es_genero(heroe:dict, genero:str):
+def es_genero(heroe:dict, genero:str) -> bool:
+    '''
+    Valida que genero sea un valor deseado.
+    Recibe por parametro un diccionario y un string.
+    Retorna un verdero o falso.
 
-    # print(heroe["genero"] == genero)
+    '''
+
     return (heroe["genero"] == genero)
-
-
-    # if(heroe["genero"] == genero):
-    #     retorno = True
-    
-    # else:
-    #     retorno = False
-    
-    # return retorno
-
-# es_genero(lista_heroes[4], "F")
 
 
 #-----------Punto 2.2---------------------
 
 def stark_guardar_heroe_genero(lista_heroes:list, genero:str):
+    '''
+    La funcion crea un archivo con el genero deseado.
+    Retorna una lista y un string.
+    Retorna el archivo.
+    '''
 
     nombre = ""
     retorno = True
@@ -334,24 +366,32 @@ def stark_guardar_heroe_genero(lista_heroes:list, genero:str):
 #-----------Punto 3.1---------------------
 
 def calcular_min_genero(lista:list, clave:str, genero:str) -> dict:
+  
+    if(genero == "F"):
+        heroe_min = primer_heroe_femenino(lista)
+        primer_heroe = heroe_min[clave]
+    elif(genero == "M"):
+        heroe_min = primer_heroe_masculino(lista)
+        primer_heroe = heroe_min[clave]  
 
     for heroe in lista:
-
-        if(es_genero(heroe, genero)):
-
-            primer_heroe_dato = heroe[clave]
-            heroe_min = heroe
-            break
-
-    for heroe in lista:
-
-        if(heroe[clave] < primer_heroe_dato):
-
-            primer_heroe_dato = heroe[clave]
-            heroe_min = heroe
+        if(es_genero(heroe, genero) == True):  
+            if(heroe["genero"] == genero):
+                if(heroe[clave] < primer_heroe):
+                    primer_heroe = heroe[clave]
+                    heroe_min = heroe
         
-    return heroe_min
+        else:
+            retorno = "N/A"
+    
+        retorno = heroe_min
+
+    return retorno
+
+    
             
+
+
 
 
 #-----------Punto 3.2---------------------
@@ -359,66 +399,90 @@ def calcular_min_genero(lista:list, clave:str, genero:str) -> dict:
 
 def calcular_max_genero(lista:list, clave:str, genero:str) -> dict:
 
+    if(genero == "F"):
+        heroe_max = primer_heroe_femenino(lista)
+        primer_heroe = heroe_max[clave]
+    elif(genero == "M"):
+        heroe_max = primer_heroe_masculino(lista)
+        primer_heroe = heroe_max[clave]  
 
     for heroe in lista:
-
-        if(es_genero(heroe, genero)):
-
-            primer_heroe_dato = heroe[clave]
-            heroe_max = heroe
-        
-    for heroe in lista:
-
-        if(heroe[clave] > primer_heroe_dato):
-
-            primer_heroe_dato = heroe[clave]
-            heroe_max = heroe
-
+        if(es_genero(heroe, genero) == True):  
+            if(heroe["genero"] == genero):
+                if(heroe[clave] > primer_heroe):
+                    primer_heroe = heroe[clave]
+                    heroe_max = heroe
+        else:
+            retorno = "N/A"
     
-    return heroe_max
+        retorno = heroe_max
+
+    return retorno
+
+def calcular_max_min_dato(lista:list, clave:str, genero:str, tipo:str) -> str:
+
+
+    if(type(lista) == type(list()) and len(lista) > 0):
+
+        for heroe in lista:
+
+            if(es_genero(heroe, genero) == True):
+
+                if(heroe["genero"] == genero):
+                    if(tipo == "minimo"):
+                        heroe_max_min = calcular_min_genero(lista,clave,genero)
+                        retorno = heroe_max_min
+                    elif(tipo == "maximo"):
+                        heroe_max_min = calcular_max_genero(lista,clave,genero)
+                        retorno = heroe_max_min
+            elif():
+
+                retorno = "N/A"
+    else:
+        retorno = "N/A"
+    
+    return retorno
 
 
 
 
+# print(calcular_max_min_dato(lista_heroes,"peso","M","maximo"))
 
 
 
+def stark_calcular_imprimir_guardar_heroe_genero(lista:list, genero:str,clave:str,tipo:str) -> str:
+    
+    genero = genero.upper()
+    clave = clave.lower()
+    tipo = tipo.lower()
+
+    validacion_clave = re.search("altura|peso|fuerza", clave)
+    validacion_tipo = re.search("minimo|maximo", tipo)
+    validacion_genero = re.search("F|M", genero)
+
+    if(type(lista) == type(list()) and len(lista) > 0 and (validacion_clave and validacion_tipo and validacion_genero) != None):
+        dato = "mayor"
+        if(tipo == "minimo"):
+            dato = "menor"
+        if(tipo == "minimo" or tipo == "maximo"):
+            heroe_min_max = calcular_max_min_dato(lista,clave,genero,tipo)
+            
+            data_heroe = "{0} {1}: Nombre: {2} | {3}: {4}".format(dato, clave, heroe_min_max["nombre"], clave, heroe_min_max[clave])
+        imprimir_dato(data_heroe)
+
+        guardar_archivo(f"heroes_{tipo}_{clave}_{genero}.csv", data_heroe)
+
+    else:
+        print("N/A")
+# stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"F", "altura", "minimo")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def inicio(lista:list):
+def app_stark(lista:list) -> str:
 
     stark_normalizar_datos(lista)
 
-    stark_marvel_app_cinco(lista)
+    stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"F","Altura","minimo")
 
-    # heroe = calcular_altura_mas_alta(lista)
-    
-    # print(obtener_nombre_y_dato(lista[0], "altura"))
 
-    # calcular_min_genero(lista, "peso", "M")
-    # print(calcular_max_genero(lista, "peso", "M"))
-    # print(stark_guardar_heroe_genero(lista, "M"))
-
-inicio(lista_heroes)
+app_stark(lista_heroes)
