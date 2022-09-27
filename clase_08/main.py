@@ -461,16 +461,16 @@ def stark_calcular_imprimir_guardar_heroe_genero(lista:list, genero:str,clave:st
     validacion_genero = re.search("F|M", genero)
 
     if(type(lista) == type(list()) and len(lista) > 0 and (validacion_clave and validacion_tipo and validacion_genero) != None):
-        dato = "mayor"
+        dato = "Mayor"
         if(tipo == "minimo"):
-            dato = "menor"
+            dato = "Menor"
         if(tipo == "minimo" or tipo == "maximo"):
             heroe_min_max = calcular_max_min_dato(lista,clave,genero,tipo)
             
             data_heroe = "{0} {1}: Nombre: {2} | {3}: {4}".format(dato, clave, heroe_min_max["nombre"], clave, heroe_min_max[clave])
         imprimir_dato(data_heroe)
 
-        guardar_archivo(f"heroes_{tipo}_{clave}_{genero}.csv", data_heroe)
+        guardar_archivo(f"clase_repaso\heroes_{tipo}_{clave}_{genero}.csv", data_heroe)
 
     else:
         print("N/A")
@@ -482,7 +482,7 @@ def app_stark(lista:list) -> str:
 
     stark_normalizar_datos(lista)
 
-    stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"F","Altura","minimo")
+    stark_calcular_imprimir_guardar_heroe_genero(lista_heroes,"f","altura","minimo")
 
 
 app_stark(lista_heroes)
