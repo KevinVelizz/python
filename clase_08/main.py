@@ -311,7 +311,6 @@ def obtener_nombre_y_dato(heroe:dict, key:str) -> str:
     Recibe por parametros un diccionario y un string.
     Retorna un string.
     '''
-
     nombre = obtener_nombre_capitalizado(heroe)
 
     return "{0} | {1} {2}".format(nombre ,key, heroe[key])
@@ -362,7 +361,7 @@ def stark_guardar_heroe_genero(lista_heroes:list, genero:str):
     return retorno
 
     # imprimir_dato(nuevo)
-print(stark_guardar_heroe_genero(lista_heroes,"F"))
+# print(stark_guardar_heroe_genero(lista_heroes,"F"))
 
 #-----------Punto 3.1---------------------
 

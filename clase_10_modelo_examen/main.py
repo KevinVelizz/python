@@ -77,6 +77,7 @@ def app_stark(lista:list):
             modo_validado = func.validar_respuesta(modo, "^(desc|asc)$")
 
             if(modo_validado != -1):
+                modo_validado.lower()
                 heroe_altura = func.listar_ordernar_heroe(lista,"altura",modo_validado) 
                 mensaje_dato_dos = func.mostrar(heroe_altura,"altura")
                 
@@ -91,7 +92,8 @@ def app_stark(lista:list):
             modo_validado = func.validar_respuesta(modo,"^asc|desc$")
 
             if(modo_validado != -1):
-                    
+                
+                modo_validado = modo_validado.lower()
                 heroe_fuerza = func.listar_ordernar_heroe(lista,"fuerza",modo_validado) 
                 mensaje_dato_tres = func.mostrar(heroe_fuerza,"fuerza")
                 # print(mensaje_dato)
@@ -108,7 +110,8 @@ def app_stark(lista:list):
             condicion_clave_validado = func.validar_respuesta(condicion_clave,"^fuerza|altura|peso$")
 
             if(condicion_validado != -1 and condicion_clave_validado != -1):
-                    
+                condicion_clave = condicion_clave.lower()
+                condicion_clave_validado = condicion_clave_validado.lower
                 promedio_lista = func.calcular_promedio(lista,condicion_clave_validado,condicion_validado)
 
                 mensaje_dato_cuatro = func.mostrar(promedio_lista,condicion_clave_validado)    
