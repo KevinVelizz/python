@@ -1,5 +1,6 @@
 
 import re
+from traceback import print_tb
 import func
 
 
@@ -59,10 +60,13 @@ def app_stark(lista:list):
                     print("N/A")
                     
                 else:
-                    mensaje = (func.listar_heroes(lista,cantidad_validado))  
+                    lista = (func.listar_heroes(lista,cantidad_validado))  
+                    mensaje = ""
+                    for heroe in lista:
+                        mensaje += heroe["nombre"] + "\n"
                     # mensaje = func.mostrar_dato(mensaje)
                     print(mensaje)
-                    mensaje_dato = mensaje
+                    mensaje_dato_uno = mensaje
 
             else:
                 print("N/A")
@@ -70,13 +74,13 @@ def app_stark(lista:list):
         elif(dato == "2"):
 
             modo = input("Ingrese el modo de ordenar, descendente(desc) o ascendente(asc): ")
-
             modo_validado = func.validar_respuesta(modo, "^(desc|asc)$")
 
             if(modo_validado != -1):
                 heroe_altura = func.listar_ordernar_heroe(lista,"altura",modo_validado) 
-                mensaje_dato = func.mostrar(heroe_altura,"altura")
-                print(mensaje_dato)
+                mensaje_dato_dos = func.mostrar(heroe_altura,"altura")
+                
+                print(mensaje_dato_dos)
 
             else:
                 print("N/A")
@@ -84,21 +88,18 @@ def app_stark(lista:list):
 
         elif(dato == "3"):
             modo = input("Ingrese el modo de ordenar, descendente(desc) o ascendente(asc): ")
-            heroe_fuerza = func.listar_ordernar_heroe(lista,"fuerza",modo)
-            mensaje_dato = func.mostrar(heroe_fuerza,"fuerza")
-
             modo_validado = func.validar_respuesta(modo,"^asc|desc$")
 
-            if(condicion_validado != -1 and condicion_clave_validado != -1):
+            if(modo_validado != -1):
                     
-                promedio = func.calcular_promedio(lista,condicion_clave_validado,condicion_validado)
-                mensaje_dato = func.mostrar(promedio,"altura")
-                print(mensaje_dato)
+                heroe_fuerza = func.listar_ordernar_heroe(lista,"fuerza",modo_validado) 
+                mensaje_dato_tres = func.mostrar(heroe_fuerza,"fuerza")
+                # print(mensaje_dato)
 
             else:
                 print("N/A")
 
-            print(mensaje_dato)
+            print(mensaje_dato_tres)
         elif(dato == "4"):
             condicion = input("Ingrese 'menor' para ver los que no superan el promedio y 'mayor' para los que superan: ")
             condicion_clave = input("Ingrese 'fuerza', 'altura', 'peso': ")
@@ -108,14 +109,11 @@ def app_stark(lista:list):
 
             if(condicion_validado != -1 and condicion_clave_validado != -1):
                     
-                promedio = func.calcular_promedio(lista,condicion_clave_validado,condicion_validado)
-                mensaje_dato = func.mostrar(promedio,"altura")
-                print(mensaje_dato)
+                promedio_lista = func.calcular_promedio(lista,condicion_clave_validado,condicion_validado)
 
-            else:
-                print("N/A")
-                
-
+                mensaje_dato_cuatro = func.mostrar(promedio_lista,condicion_clave_validado)    
+    
+                func.mostrar_dato(mensaje_dato)
 
            
         elif(dato == "5"):
@@ -129,14 +127,32 @@ def app_stark(lista:list):
                 mensaje_dato += personaje + ", "
 
             mensaje_dato = re.sub(", $", "",mensaje_dato)
-            
-
             print(mensaje_dato)
 
         elif(dato == "6"):
-            func.exportar_csv(mensaje_dato)
+            
+            condicion = input("Cual lista desea exportar? ")
+            condicion_validado = int(func.validar_respuesta(condicion,"^[0-9]$"))
+
+            # print(condicion_validado)
+
+            if(condicion_validado  < 5):
+
+                if(condicion_validado == 1):
+                    func.exportar_csv(mensaje_dato_uno)
+                elif(condicion_validado == 2):
+                    func.exportar_csv(mensaje_dato_dos)
+                elif(condicion_validado == 3):
+                    func.exportar_csv(mensaje_dato_tres)
+                elif(condicion_validado == 4):
+                    func.exportar_csv(mensaje_dato_cuatro)
+            else:
+                print("N/A")
+            
+
+            # func.exportar_csv(mensaje_dato)
         elif(dato == "7"):
             break
-        continue
+        
         
 app_stark(lista_heroes)
