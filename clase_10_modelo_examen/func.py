@@ -161,5 +161,5 @@ def buscar_listar_heroe_inteligencia(lista:list,condicion:str) -> list:
 
 def exportar_csv(mensaje:str):
 
-    with open ("archivo.csv", "w") as file:
+    with open ("clase_10_modelo_examen\_archivo.csv", "w") as file:
         mensaje = file.write(mensaje)
