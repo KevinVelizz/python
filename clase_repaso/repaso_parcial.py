@@ -27,7 +27,7 @@ def app():
             #VALIDAR QUE TOP SEA UN INT Y QUE NO SUPERE LAS OPCIONES.. OBTENER ENTERO MAS CHICO O MAS GRANDE
             func.mostar(lista_data[:top])
         elif(respuesta == "2"):
-            func.mostar(func.nahuel_sort_repaso(lista_data,"peso", "up"))
+            func.mostar(func.nahuel_sort_repaso(lista_data,"peso", "down"))
             pass
         elif(respuesta == "3"):
             print("buscar")

@@ -226,7 +226,7 @@ def guardar_archivo(nombre_archivo:str, contenido:str):
             retorno = True
     else:
         retorno = False
-    return retorno
+    return retorno 
 
 # print(guardar_archivo("clase_08\heroes_data.csv", "Hola"))
 
@@ -350,7 +350,7 @@ def stark_guardar_heroe_genero(lista_heroes:list, genero:str):
     for heroe in lista_heroes:
 
         if(es_genero(heroe, genero)):
-            nombre += obtener_nombre_capitalizado(heroe) + ", "
+            nombre += obtener_nombre_capitalizado(heroe) + ", " + "\n"
             
             # for heroe in lista_heroes:
         else:
@@ -362,7 +362,7 @@ def stark_guardar_heroe_genero(lista_heroes:list, genero:str):
     return retorno
 
     # imprimir_dato(nuevo)
-
+print(stark_guardar_heroe_genero(lista_heroes,"F"))
 
 #-----------Punto 3.1---------------------
 

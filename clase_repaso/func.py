@@ -67,10 +67,12 @@ def buscar_minimo_max(lista:list, clave:str,order:str)->int:
         for i in range(len(lista)): #que itere desde la posicion 1
             if(order == "down" and lista[i][clave] < lista[i_min_max][clave]) or (order == "up" and lista[i][clave] > lista[i_min_max][clave]):
                 i_min_max = i
+
+        
         retorno = i_min_max
     return retorno
 
-# print(buscar_minimo_max(lista_heroes,"altura", "up"))
+print(buscar_minimo_max(lista_heroes,"altura", "down"))
 
 
 def nahuel_sort_repaso(lista:list, clave:str, order:str="up") -> list:
@@ -133,4 +135,4 @@ def validar_num(dato:str) -> str:
 
     print(dato)
 
-validar_num("24")
+# validar_num("24")
