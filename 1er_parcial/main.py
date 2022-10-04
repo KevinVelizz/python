@@ -63,14 +63,11 @@ def starwars_app():
                 lista = funciones.ordenar_heroes_por_clave(lista_personajes,"mass",codicion_validado)
 
                 mostrar =  funciones.mostrar(lista,"mass")
+
                 print(mostrar)
             else:
                 print("N/A")
 
-
-            lista = funciones.ordenar_heroes_por_clave(lista_personajes_validada,"mass","desc")
-
-            mostrar = funciones.mostrar(lista, "mass")
 
             print(mostrar)    
         elif(respuesta=="4"):
