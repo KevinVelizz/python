@@ -1,7 +1,7 @@
 
 import json
 import re
-from traceback import print_tb
+
 
 
 '''
@@ -593,8 +593,7 @@ def app_stark(lista:list) -> str:
 
     print(stark_calcular_imprimir_guardar_promedio_altura_genero(lista,"altura","M"))
 
-app_stark(lista_heroes)
-
+# app_stark(lista_heroes)
 
 
 
