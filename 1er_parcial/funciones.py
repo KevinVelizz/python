@@ -1,5 +1,7 @@
+
 import json
 import re
+
 
 def validar_respuesta(respuesta:str,expresion_regular:str):
     '''
@@ -16,7 +18,6 @@ def validar_respuesta(respuesta:str,expresion_regular:str):
             retorno = respuesta
     
     return retorno
-
 
 
 def cargar_json(path:str) -> list:
@@ -88,7 +89,6 @@ def buscar_min_max(lista:list,clave:str,orden:str) -> int:
 
         lista_copia = lista.copy()
 
-        
         min_max_i = 0
 
         for i in range(len(lista_copia)):
@@ -130,6 +130,7 @@ def ordenar_heroes_por_clave(lista:list,clave:str,orden:str) -> list:
 
 
 
+
 def mostar_personaje_mas_alto_genero(lista:list,genero:str):
     '''
     Muestra el mensaje mas alto por genero.
@@ -164,12 +165,6 @@ def buscador_personajes(lista:list,respuesta:str) -> dict:
             print(heroe)
 
 
-
-
-
-
-
-
 def exportar_csv(lista:list):
     '''
     La funcion exporta la lista a un archio csv.
@@ -179,7 +174,7 @@ def exportar_csv(lista:list):
 
     with open("1er_parcial/archivo.csv","w") as file:
 
-        mensaje = "name, height, mass, gender"
+        mensaje = "name, height, mass, gender\n"
         for heroe in lista: 
 
             mensaje += "{0}, {1}, {2}, {3}\n".format(heroe["name"],heroe["height"],heroe["mass"],heroe["gender"])
@@ -190,8 +185,10 @@ def exportar_csv(lista:list):
 
 
 
+# sumar = lambda a: int(a)
 
 
+# print(sumar("2"))
 
 
 

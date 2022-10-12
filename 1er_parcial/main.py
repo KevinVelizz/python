@@ -1,5 +1,4 @@
 import re
-from time import monotonic_ns
 import funciones
 
 '''
@@ -9,16 +8,14 @@ import funciones
 4 - Armar un buscador de personajes 
 5 - Exportar lista personajes a CSV
 6 - Salir
-
 '''
-
 
 def starwars_app():
     lista_personajes = funciones.cargar_json(r"1er_parcial\data.json")
 
-    lista_personajes_validada = funciones.normalizar_datos(lista_personajes)
+    lista_personajes_normalizada = funciones.normalizar_datos(lista_personajes)
 
-    # print(lista_personajes_validada)
+    # print(lista_personajes_normalizada)
 
     while(True):
 
@@ -26,28 +23,33 @@ def starwars_app():
         respuesta = input()
         if(respuesta=="1"):
             print("1 - Listar los personajes ordenados por altura\n")
+            
+            lista_personajes_normalizada.sort(key=lambda result: result["height"],reverse=True)
+            lista = funciones.mostrar(lista_personajes_normalizada,"height")
+            print(lista)
+            # lista = funciones.ordenar_heroes_por_clave(lista_personajes_normalizada,"height","desc")
+            # mostrar = funciones.mostrar(lista,"height")
 
-            lista = funciones.ordenar_heroes_por_clave(lista_personajes_validada,"height","desc")
-
-            mostrar = funciones.mostrar(lista,"height")
-
-            print(mostrar)
+            # print(mostrar)
 
         elif(respuesta=="2"):
-            print("2 - Mostrar el personaje mas alto de cada genero\n")
+            # print("2 - Mostrar el personaje mas alto de cada genero\n")
 
-            genero = input("Ingrese el genero: n/a, female, male: ")
+            # lista =  lista = funciones.ordenar_heroes_por_clave(lista_personajes_normalizada,"height","desc")
+            if()
+                
 
-            genero_validado = funciones.validar_respuesta(genero,"^n/a|female|male$")
+            # genero = input("Ingrese el genero: n/a, female, male: ")
 
-            if(genero_validado != -1):
+            # genero_validado = funciones.validar_respuesta(genero,"^n/a|female|male$")
 
+            # if(genero_validado != -1):
 
-                nombre = funciones.mostar_personaje_mas_alto_genero(lista,genero_validado)
+            #     nombre = funciones.mostar_personaje_mas_alto_genero(lista,genero_validado)
 
-                print(nombre)
-            else:
-                print("N/A")
+            #     print(nombre)
+            # else:
+            #     print("N/A")
                 
 
         elif(respuesta=="3"):
@@ -85,6 +87,5 @@ def starwars_app():
 
         elif(respuesta=="6"):
             break
-
 
 starwars_app()
